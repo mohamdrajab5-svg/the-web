@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - Student Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Student Hub</h2>
+            </div>
+            <ul>
+                <li><a href="index.html">Community Posts</a></li>
+                <li><a href="hub.html">Personal Hub</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="logout"><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Your Profile</h1>
+
+            <div class="card profile-card">
+                <div id="profile-view">
+                    <img id="profile-pic-view" src="httpsimg-placeholder.png" alt="Profile Picture" class="profile-pic">
+                    <h2 id="profile-name-view">Loading...</h2>
+                    <p id="profile-email-view">Loading...</p>
+                    <p id="profile-bio-view">No bio yet.</p>
+                    <button id="edit-profile-btn" class="action-btn">Edit Profile</button>
+                </div>
+
+                <form id="profile-edit-form" class="profile-form" style="display: none;">
+                    <h3>Edit Your Profile</h3>
+                    
+                    <label for="edit-name">Name</label>
+                    <input type="text" id="edit-name" placeholder="Your Name">
+                    
+                    <label for="edit-bio">Bio</label>
+                    <textarea id="edit-bio" placeholder="Tell us about yourself..."></textarea>
+                    
+                    <div class="form-actions">
+                        <button type="submit" id="save-profile-btn">Save Changes</button>
+                        <button type="button" id="cancel-edit-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <h2>Your Posts</h2>
+            <div class="feed" id="user-posts-feed">
+                <p id="loading-posts">Loading your posts...</p>
+            </div>
+
+        </main>
+    </div>
+    <script src="global.js"></script>
+    <script src="profile.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resource Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Student Hub</h2>
+            </div>
+            <ul>
+                <li><a href="index.html" class="active">Community Posts</a></li>
+                <li><a href="hub.html">Personal Hub</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="logout"><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Community Posts</h1>
+
+            <div class="card create-post-box">
+                <input type="text" placeholder="Create a new post...">
+            </div>
+
+            <div class="feed">
+                
+                <div class="card post-card">
+                    <div class="post-header">
+                        <strong>Username123</strong> <span class="post-time"> - 2 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p>This is the content of the post. Does anyone have notes for the 
+                           midterm? I missed the last class.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn upvote">Upvote (3)</button>
+                        <button class="action-btn comment">Comment (1)</button>
+                    </div>
+                </div>
+
+                <div class="card post-card">
+                    <div class="post-header">
+                        <strong>SarahJ</strong> <span class="post-time"> - 5 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p>Found a great resource for JavaScript projects: [link here]</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn upvote">Upvote (12)</button>
+                        <button class="action-btn comment">Comment (4)</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+<script src="global.js"></script>
+</body>
+</html>
+

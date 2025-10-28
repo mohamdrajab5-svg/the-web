@@ -1,0 +1,276 @@
+/* === GLOBAL & DARK MODE === */
+:root {
+    --bg-dark-primary: #121212;   /* Deep black bg */
+    --bg-dark-secondary: #1e1e1e; /* Lighter black for cards/sidebar */
+    --border-color: #333;      /* Subtle border color */
+    --text-primary: #e0e0e0;   /* Light grey text */
+    --text-secondary: #aaaaaa; /* Darker grey text */
+    --accent-color: #007bff;   /* A nice blue for links/buttons */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark-primary);
+    color: var(--text-primary);
+}
+
+/* === LAYOUT === */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 240px;
+    background-color: var(--bg-dark-secondary);
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    flex-grow: 1; /* Pushes logout to the bottom */
+}
+
+.sidebar li a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.sidebar li a:hover {
+    background-color: #2a2a2a;
+}
+
+.sidebar li a.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.sidebar .logout {
+    margin-top: auto; /* Pushes this item to the bottom */
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+    flex-grow: 1; /* Takes up remaining space */
+    padding: 30px;
+    max-width: 800px; /* Limits feed width for readability */
+    margin: 0 auto; /* Centers the main content */
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+/* === CARD (Used for posts, etc.) === */
+.card {
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* === POST STYLES === */
+.create-post-box input[type="text"] {
+    width: 100%;
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.create-post-box input::placeholder {
+    color: var(--text-secondary);
+}
+
+.post-card {
+    padding: 20px;
+}
+
+.post-header {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.post-header strong {
+    color: var(--text-primary);
+}
+
+.post-content {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.post-actions .action-btn {
+    background: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.post-actions .action-btn:hover {
+    background: #333;
+}
+
+/* === ADDITIONS FOR HUB.HTML === */
+
+.add-task-form {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.add-task-form input[type="text"] {
+    flex-grow: 1; /* Input box takes most of the space */
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.add-task-form button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-task-form button:hover {
+    opacity: 0.9;
+}
+
+.task-list-container {
+    margin-top: 30px;
+}
+
+.task-list-container h2 {
+    margin-bottom: 15px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.task-list li input[type="checkbox"] {
+    /* Larger, more clickable checkbox */
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+/* === ADDITIONS FOR PROFILE.HTML === */
+
+.profile-card {
+    padding: 25px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Makes it round */
+    border: 3px solid var(--border-color);
+    background-color: #333; /* Placeholder color */
+    margin-bottom: 15px;
+}
+
+#profile-view h2 {
+    margin-bottom: 5px;
+}
+
+#profile-view #profile-email-view {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+#profile-view #profile-bio-view {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Edit Profile Form */
+.profile-form label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+}
+
+.profile-form input[type="text"],
+.profile-form textarea {
+    width: 100%;
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.profile-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.profile-form .form-actions {
+    margin-top: 20px;
+}
+
+/* Re-using the button style from hub.html */
+.profile-form .form-actions button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.profile-form .form-actions button[type="button"] {
+    background-color: var(--border-color); /* Cancel button */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Hub - Student Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Student Hub</h2>
+            </div>
+            <ul>
+                <li><a href="index.html">Community Posts</a></li>
+                <li><a href="hub.html" class="active">Personal Hub</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="logout"><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Personal Hub</h1>
+            <p>Your private list of tasks and homework.</p>
+
+            <div class="card add-task-form">
+                <input type="text" id="task-input" placeholder="Add a new task...">
+                <button id="add-task-btn">Add Task</button>
+            </div>
+
+            <div class="task-list-container">
+                <h2>To-Do</h2>
+                <ul id="task-list" class="task-list">
+                    </ul>
+                <p id="loading-tasks" style="display: none;">Loading tasks...</p>
+            </div>
+
+        </main>
+    </div>
+    <script src="global.js"></script>
+    <script src="hub.js"></script>
+</body>
+</html>
