@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('error-message');
     const registerBtn = document.getElementById('register-btn');
 
-    const API_REGISTER_URL = 'https://student-hub-backend-dij3.onrender.com/api/auth/register';
-
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         errorMessage.textContent = '';
@@ -19,28 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const response = await fetch(API_REGISTER_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, email, password })
+            // This one line replaces our entire backend registration route
+            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+            
+            // (Optional) We can also save the user's name to their profile
+            await userCredential.user.updateProfile({
+                displayName: name
             });
             
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || 'Failed to register. Email may be in use.');
-            }
-
-            // --- SUCCESS ---
-            // Save the new token
-            localStorage.setItem('authToken', data.token);
+            // We'll handle login state automatically in global.js later
+            console.log('User registered!', userCredential.user);
             
             // Redirect to the main app page
             window.location.href = 'index.html';
 
         } catch (error) {
+            // Handle Firebase errors (like "email already in use")
             errorMessage.textContent = error.message;
             registerBtn.textContent = 'Create Account';
             registerBtn.disabled = false;
