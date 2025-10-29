@@ -335,3 +335,64 @@ body {
     margin-top: 15px;
     min-height: 1.2em;
 }
+/* === ADDITIONS FOR INDEX.HTML POST FORM === */
+
+.create-post-form {
+    padding: 20px;
+}
+
+#create-post-form input[type="text"],
+#create-post-form textarea {
+    width: 100%;
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+#create-post-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.create-post-form .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-post-form select {
+    background-color: #2a2a2a;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.create-post-form button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.create-post-form button:hover {
+    opacity: 0.9;
+}
+
+/* We can reuse the auth.css error style */
+.create-post-form .error-message {
+    color: var(--error-color);
+    font-weight: 600;
+    margin-top: 15px;
+    min-height: 1.2em;
+}
