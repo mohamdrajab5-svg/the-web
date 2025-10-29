@@ -396,3 +396,16 @@ body {
     margin-top: 15px;
     min-height: 1.2em;
 }
+/* === ADDITION FOR FORGOT PASSWORD LINK === */
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+.forgot-link:hover {
+    text-decoration: underline;
+}
