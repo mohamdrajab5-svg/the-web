@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('error-message');
     const loginBtn = document.getElementById('login-btn');
 
-    const API_LOGIN_URL = 'https://student-hub-backend-dij3.onrender.com/api/auth/login';
-
     loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Stop the form from submitting normally
-        errorMessage.textContent = ''; // Clear old errors
+        e.preventDefault();
+        errorMessage.textContent = '';
         loginBtn.textContent = 'Logging in...';
         loginBtn.disabled = true;
 
@@ -17,29 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const response = await fetch(API_LOGIN_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                // If backend sends an error message, use it. Otherwise, generic.
-                throw new Error(data.message || 'Invalid email or password');
-            }
-
-            // --- SUCCESS ---
-            // Your API sends back a 'token'
-            localStorage.setItem('authToken', data.token);
+            // This one line replaces our entire backend login route
+            const userCredential = await auth.signInWithEmailAndPassword(email, password);
             
+            console.log('User logged in!', userCredential.user);
+
             // Redirect to the main app page
             window.location.href = 'index.html'; 
 
         } catch (error) {
+            // Handle Firebase errors (like "wrong-password")
             errorMessage.textContent = error.message;
             loginBtn.textContent = 'Login';
             loginBtn.disabled = false;
