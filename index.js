@@ -49,27 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- HELPER: Render Posts to Page ---
+    // --- HELPER: Render Posts to Page (SAFER VERSION) ---
     function renderPosts(posts) {
         loadingMsg.style.display = 'none';
         postFeed.innerHTML = ''; // Clear loading message
 
-        if (posts.length === 0) {
+        if (!posts || posts.length === 0) {
             postFeed.innerHTML = '<p>No posts yet. Be the first!</p>';
             return;
         }
 
-        // Your API sends posts newest-first, so we'll reverse
-        // to show oldest first, or just loop as-is for newest-first.
-        // Let's assume your API sends newest first.
         posts.forEach(post => {
             const postCard = document.createElement('div');
             postCard.className = 'card post-card';
             
-            // We need to get the author's name. Your API provides it.
-            const authorName = post.author ? post.author.name : 'Unknown User';
+            // --- FIX 1: Check for a missing author ---
+            const authorName = (post.author && post.author.name) ? post.author.name : 'Unknown User';
             
-            // Simple date formatting (you can make this prettier later)
-            const postDate = new Date(post.createdAt).toLocaleDateString();
+            // --- FIX 2: Check for a missing createdAt date ---
+            const postDate = post.createdAt ? new Date(post.createdAt).toLocaleDateString() : 'Just now';
+
+            // --- FIX 3: Check for missing 'likes' (THE CRASH) ---
+            const likeCount = (post.likes || []).length; // Use 0 if 'likes' is null/undefined
 
             postCard.innerHTML = `
                 <div class="post-header">
@@ -77,17 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="post-time"> - ${postDate}</span>
                 </div>
                 <div class="post-content">
-                    <h3>${post.title}</h3>
-                    <p>${post.body}</p>
+                    <h3>${post.title || 'No Title'}</h3>
+                    <p>${post.body || 'No content'}</p>
                 </div>
                 <div class="post-actions">
                     <button class="action-btn upvote" data-id="${post._id}">
-                        Upvote (${post.likes.length})
+                        Upvote (${likeCount})
                     </button>
-                    <span class="post-category">${post.category}</span>
+                    <span class="post-category">${post.category || 'General'}</span>
                 </div>
             `;
-            // Add the category as a visual, non-interactive element
+            
+            // Style the category tag
             const categorySpan = postCard.querySelector('.post-category');
             if(categorySpan) {
                 categorySpan.style.float = 'right';
@@ -101,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             postFeed.appendChild(postCard);
         });
     }
-
     // --- API CALL 2: Create a New Post ---
     async function handleCreatePost(e) {
         e.preventDefault();
