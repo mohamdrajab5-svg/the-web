@@ -1,5 +1,32 @@
 <!DOCTYPE html>
-<div class="card create-post-form">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resource Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Student Hub</h2>
+            </div>
+            <ul>
+                <li><a href="index.html" class="active">Community Posts</a></li>
+                <li><a href="hub.html">Personal Hub</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="logout"><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Community Posts</h1>
+
+            <div class="card create-post-form">
                 <form id="create-post-form">
                     <input type="text" id="post-title" placeholder="Post Title" required>
                     <textarea id="post-body" placeholder="What's on your mind?" required></textarea>
@@ -17,3 +44,13 @@
                 </form>
             </div>
 
+            <div class="feed" id="post-feed">
+                <p id="loading-posts">Loading posts...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="global.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
